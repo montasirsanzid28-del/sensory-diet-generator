@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensory Diet Generator - Assessment Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="medical-header">
+        <div class="logo-section">
+            <div class="medical-icon">📋</div>
+            <h1>Patient Assessment Form</h1>
+        </div>
+        <div class="note">made by mont for suomi</div>
+    </div>
+    
+    <div class="container">
+        <div class="medical-card">
+            <div class="card-header">
+                <h2>Clinical Assessment</h2>
+                <div class="medical-badge">Occupational Therapy Evaluation</div>
+            </div>
+            
+            <form method="POST" action="{{ url_for('generate') }}">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="child_name">Patient Name:</label>
+                        <input type="text" id="child_name" name="child_name" required class="medical-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age (years):</label>
+                        <input type="number" id="age" name="age" min="1" max="18" required class="medical-input">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="energy_level">Energy Level Assessment:</label>
+                    <select id="energy_level" name="energy_level" required class="medical-select">
+                        <option value="Low">Low - Minimal movement, appears fatigued</option>
+                        <option value="Medium">Medium - Typical activity level</option>
+                        <option value="High">High - Excessive movement, difficulty sitting still</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sensory_concern">Primary Sensory Concern:</label>
+                    <select id="sensory_concern" name="sensory_concern" required class="medical-select">
+                        <option value="Attention issues">Attention Issues - Difficulty focusing</option>
+                        <option value="Overstimulation">Overstimulation - Easily overwhelmed</option>
+                        <option value="Low muscle tone">Low Muscle Tone - Poor posture/strength</option>
+                        <option value="Sensory seeking">Sensory Seeking - Craves intense input</option>
+                        <option value="Sensory avoiding">Sensory Avoiding - Avoids sensory input</option>
+                        <option value="Poor body awareness">Poor Body Awareness - Clumsy/uncoordinated</option>
+                        <option value="Fine motor difficulties">Fine Motor Difficulties - Hand skills</option>
+                        <option value="Gross motor delays">Gross Motor Delays - Large movements</option>
+                        <option value="Tactile defensiveness">Tactile Defensiveness - Touch sensitivity</option>
+                        <option value="Vestibular processing issues">Vestibular Processing Issues - Balance/movement</option>
+                        <option value="Proprioceptive seeking">Proprioceptive Seeking - Deep pressure needs</option>
+                        <option value="Oral motor difficulties">Oral Motor Difficulties - Eating/speech</option>
+                        <option value="Visual processing challenges">Visual Processing Challenges - Eye tracking</option>
+                        <option value="Auditory sensitivity">Auditory Sensitivity - Sound sensitivity</option>
+                        <option value="Motor planning difficulties">Motor Planning Difficulties - Sequencing</option>
+                        <option value="Sensory modulation disorder">Sensory Modulation Disorder - Regulation</option>
+                        <option value="Sensory discrimination disorder">Sensory Discrimination Disorder - Processing</option>
+                        <option value="Sensory-based motor disorder">Sensory-Based Motor Disorder - Movement</option>
+                        <option value="Postural disorder">Postural Disorder - Stability</option>
+                        <option value="Dyspraxia">Dyspraxia - Motor Planning</option>
+                        <option value="Sensory registration issues">Sensory Registration Issues - Awareness</option>
+                        <option value="Sensory sensitivity">Sensory Sensitivity - Reactivity</option>
+                        <option value="Sensory defensiveness">Sensory Defensiveness - Protection</option>
+                        <option value="Gravitational insecurity">Gravitational Insecurity - Balance Fear</option>
+                        <option value="Low registration">Low Registration - Under-Response</option>
+                        <option value="Sensory seeking behaviors">Sensory Seeking Behaviors - Craving</option>
+                        <option value="Sensory avoiding behaviors">Sensory Avoiding Behaviors - Evasion</option>
+                        <option value="Sensory over-responsivity">Sensory Over-Responsivity - Hyper-Reaction</option>
+                        <option value="Sensory under-responsivity">Sensory Under-Responsivity - Hypo-Reaction</option>
+                        <option value="Sensory craving">Sensory Craving - Intense Seeking</option>
+                        <option value="Sensory processing sensitivity">Sensory Processing Sensitivity - Awareness</option>
+                        <option value="Sensory integration difficulties">Sensory Integration Difficulties - Coordination</option>
+                        <option value="Sensory processing challenges">Sensory Processing Challenges - Function</option>
+                        <option value="Sensory processing differences">Sensory Processing Differences - Variation</option>
+                        <option value="Sensory processing disorder">Sensory Processing Disorder - Clinical</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="primary_goal">Therapeutic Goal:</label>
+                    <select id="primary_goal" name="primary_goal" required class="medical-select">
+                        <option value="Focus">Focus - Improve attention span</option>
+                        <option value="Calming">Calming - Reduce anxiety/overstimulation</option>
+                        <option value="Motor skills">Motor Skills - Improve coordination</option>
+                        <option value="Sensory regulation">Sensory Regulation - Self-regulation</option>
+                        <option value="Body awareness">Body Awareness - Spatial orientation</option>
+                        <option value="Coordination">Coordination - Motor planning</option>
+                        <option value="Strength building">Strength Building - Muscle development</option>
+                        <option value="Balance improvement">Balance Improvement - Postural control</option>
+                        <option value="Fine motor development">Fine Motor Development - Hand skills</option>
+                        <option value="Gross motor development">Gross Motor Development - Large movements</option>
+                        <option value="Attention span">Attention Span - Concentration</option>
+                        <option value="Emotional regulation">Emotional Regulation - Mood management</option>
+                        <option value="Social interaction">Social Interaction - Peer engagement</option>
+                        <option value="Self-confidence">Self-Confidence - Self-esteem</option>
+                        <option value="Sensory modulation">Sensory Modulation - Regulation</option>
+                        <option value="Sensory discrimination">Sensory Discrimination - Processing</option>
+                        <option value="Sensory integration">Sensory Integration - Coordination</option>
+                        <option value="Motor planning">Motor Planning - Sequencing</option>
+                        <option value="Postural control">Postural Control - Stability</option>
+                        <option value="Bilateral coordination">Bilateral Coordination - Both Sides</option>
+                        <option value="Visual-motor integration">Visual-Motor Integration - Eye-Hand</option>
+                        <option value="Auditory processing">Auditory Processing - Sound</option>
+                        <option value="Tactile processing">Tactile Processing - Touch</option>
+                        <option value="Vestibular processing">Vestibular Processing - Balance</option>
+                        <option value="Proprioceptive processing">Proprioceptive Processing - Body Sense</option>
+                        <option value="Oral-motor skills">Oral-Motor Skills - Mouth</option>
+                        <option value="Fine motor precision">Fine Motor Precision - Detail</option>
+                        <option value="Gross motor coordination">Gross Motor Coordination - Large</option>
+                        <option value="Sensory awareness">Sensory Awareness - Consciousness</option>
+                        <option value="Sensory tolerance">Sensory Tolerance - Endurance</option>
+                        <option value="Sensory adaptation">Sensory Adaptation - Adjustment</option>
+                        <option value="Sensory organization">Sensory Organization - Structure</option>
+                        <option value="Sensory responsiveness">Sensory Responsiveness - Reaction</option>
+                        <option value="Sensory regulation">Sensory Regulation - Control</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specific_needs">Clinical Notes / Specific Considerations:</label>
+                    <textarea id="specific_needs" name="specific_needs" rows="4" placeholder="Medical history, contraindications, specific limitations, caregiver preferences..." class="medical-textarea"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Generate Treatment Plan</button>
+                    <a href="{{ url_for('home') }}" class="btn-secondary">Return to Dashboard</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <style>
+        :root {
+            --medical-blue: #2c5aa0;
+            --medical-light: #e8f0fe;
+            --medical-dark: #1a365d;
+            --medical-green: #2d5a27;
+            --medical-yellow: #f4a261;
+            --medical-gray: #6c757d;
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .medical-header {
+            background: linear-gradient(135deg, var(--medical-blue), var(--medical-dark));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .medical-icon {
+            font-size: 2.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .note {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-style: italic;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            padding: 30px;
+        }
+        
+        .medical-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-left: 5px solid var(--medical-blue);
+        }
+        
+        .card-header {
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--medical-light);
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            margin: 0 0 10px 0;
+            color: var(--medical-dark);
+            font-size: 1.5rem;
+        }
+        
+        .medical-badge {
+            background: var(--medical-light);
+            color: var(--medical-blue);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--medical-dark);
+            font-size: 0.9rem;
+        }
+        
+        .medical-input, .medical-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: white;
+            box-sizing: border-box;
+        }
+        
+        .medical-input:focus, .medical-select:focus {
+            outline: none;
+            border-color: var(--medical-blue);
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        
+        .medical-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: white;
+            box-sizing: border-box;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .medical-textarea:focus {
+            outline: none;
+            border-color: var(--medical-blue);
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        
+        .form-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--medical-blue);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(44, 90, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--medical-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(44, 90, 160, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: var(--medical-gray);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(108, 117, 125, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(108, 117, 125, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .medical-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .medical-card {
+                padding: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensory Diet Generator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="medical-header">
+        <div class="logo-section">
+            <div class="medical-icon">🏥</div>
+            <h1>Sensory Diet Generator</h1>
+        </div>
+        <div class="note">made by mont for suomi</div>
+    </div>
+    
+    <div class="container">
+        <div class="medical-card">
+            <div class="card-header">
+                <h2>Patient Assessment Tool</h2>
+                <div class="medical-badge">Occupational Therapy Support</div>
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>Medical Disclaimer:</strong> This tool is for educational support only. 
+                Always consult with a qualified occupational therapist or healthcare professional 
+                before implementing any sensory activities with children.</p>
+            </div>
+            
+            <div class="description">
+                <p>This clinical assessment tool helps generate age-appropriate sensory activities based on 
+                patient presentation, energy levels, sensory processing concerns, and therapeutic goals. 
+                Recommendations are evidence-based and should be individualized by qualified professionals.</p>
+            </div>
+            
+            <div class="actions">
+                <a href="{{ url_for('generate') }}" class="btn-primary">Begin Assessment</a>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        :root {
+            --medical-blue: #2c5aa0;
+            --medical-light: #e8f0fe;
+            --medical-dark: #1a365d;
+            --medical-green: #2d5a27;
+            --medical-yellow: #f4a261;
+            --medical-gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .medical-header {
+            background: linear-gradient(135deg, var(--medical-blue), var(--medical-dark));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .medical-icon {
+            font-size: 2.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .note {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-style: italic;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            padding: 30px;
+        }
+        
+        .medical-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-left: 5px solid var(--medical-blue);
+        }
+        
+        .card-header {
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--medical-light);
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            margin: 0 0 10px 0;
+            color: var(--medical-dark);
+            font-size: 1.5rem;
+        }
+        
+        .medical-badge {
+            background: var(--medical-light);
+            color: var(--medical-blue);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .disclaimer {
+            background-color: var(--medical-light);
+            border: 1px solid #b8daff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--medical-blue);
+        }
+        
+        .disclaimer p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--medical-dark);
+        }
+        
+        .description {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .actions {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--medical-blue);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(44, 90, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--medical-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(44, 90, 160, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .medical-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .medical-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</body>
+</html>

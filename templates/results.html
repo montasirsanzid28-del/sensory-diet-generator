@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensory Diet Generator - Treatment Plan</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="medical-header">
+        <div class="logo-section">
+            <div class="medical-icon">📋</div>
+            <h1>Treatment Plan</h1>
+        </div>
+        <div class="note">made by mont for suomi</div>
+    </div>
+    
+    <div class="container">
+        <div class="medical-card">
+            <div class="card-header">
+                <h2>Individualized Sensory Intervention Plan</h2>
+                <div class="medical-badge">Occupational Therapy Protocol</div>
+            </div>
+            
+            <div class="patient-info">
+                <h3>Patient Profile</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Name:</span>
+                        <span class="value">{{ child_name }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Age:</span>
+                        <span class="value">{{ age }} years</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Energy Level:</span>
+                        <span class="value">{{ energy_level }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Primary Concern:</span>
+                        <span class="value">{{ sensory_concern }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Therapeutic Goal:</span>
+                        <span class="value">{{ primary_goal }}</span>
+                    </div>
+                </div>
+                {% if specific_needs %}
+                <div class="clinical-notes">
+                    <span class="label">Clinical Notes:</span>
+                    <p class="value">{{ specific_needs }}</p>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>Medical Disclaimer:</strong> This treatment plan is for educational support only. 
+                Always consult with a qualified occupational therapist or healthcare professional 
+                before implementing any sensory activities with children.</p>
+            </div>
+            
+            <div class="treatment-section">
+                <h3>Recommended Therapeutic Activities</h3>
+                {% if activities %}
+                    <div class="activity-grid">
+                        {% for activity in activities %}
+                            <div class="activity-card">
+                                <div class="activity-header">
+                                    <h4>{{ activity.name }}</h4>
+                                    <span class="category-badge">{{ activity.category }}</span>
+                                </div>
+                                <p class="description">{{ activity.description }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="no-activities">
+                        <p>No activities found for the given criteria. Please try adjusting the age range or other parameters.</p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="treatment-actions">
+                <a href="{{ url_for('generate') }}" class="btn-primary">Generate New Plan</a>
+                <a href="{{ url_for('home') }}" class="btn-secondary">Return to Dashboard</a>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        :root {
+            --medical-blue: #2c5aa0;
+            --medical-light: #e8f0fe;
+            --medical-dark: #1a365d;
+            --medical-green: #2d5a27;
+            --medical-yellow: #f4a261;
+            --medical-gray: #6c757d;
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .medical-header {
+            background: linear-gradient(135deg, var(--medical-blue), var(--medical-dark));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .medical-icon {
+            font-size: 2.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .note {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-style: italic;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            padding: 30px;
+        }
+        
+        .medical-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-left: 5px solid var(--medical-blue);
+        }
+        
+        .card-header {
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--medical-light);
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            margin: 0 0 10px 0;
+            color: var(--medical-dark);
+            font-size: 1.5rem;
+        }
+        
+        .medical-badge {
+            background: var(--medical-light);
+            color: var(--medical-blue);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .patient-info {
+            background-color: var(--medical-light);
+            border: 1px solid #b8daff;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            margin: 0 0 15px 0;
+            color: var(--medical-dark);
+            font-size: 1.2rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .label {
+            display: block;
+            font-weight: 600;
+            color: var(--medical-dark);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .value {
+            color: #495057;
+            font-size: 1rem;
+        }
+        
+        .clinical-notes {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .disclaimer {
+            background-color: var(--medical-light);
+            border: 1px solid #b8daff;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--medical-blue);
+        }
+        
+        .disclaimer p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--medical-dark);
+        }
+        
+        .treatment-section {
+            margin-bottom: 30px;
+        }
+        
+        .treatment-section h3 {
+            margin: 0 0 20px 0;
+            color: var(--medical-dark);
+            font-size: 1.3rem;
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .activity-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .activity-card {
+            background-color: white;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .activity-card:hover {
+            border-color: var(--medical-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(44, 90, 160, 0.2);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .activity-header h4 {
+            margin: 0;
+            color: var(--medical-dark);
+            font-size: 1.1rem;
+        }
+        
+        .category-badge {
+            background-color: var(--medical-light);
+            color: var(--medical-blue);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .description {
+            color: #495057;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .no-activities {
+            text-align: center;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            border: 1px solid #dee2e6;
+        }
+        
+        .no-activities p {
+            color: #6c757d;
+            font-style: italic;
+            margin: 0;
+        }
+        
+        .treatment-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--medical-blue);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(44, 90, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--medical-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(44, 90, 160, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: var(--medical-gray);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(108, 117, 125, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(108, 117, 125, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .medical-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .medical-card {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .treatment-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>
